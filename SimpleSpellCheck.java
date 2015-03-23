@@ -13,7 +13,7 @@ public class SimpleSpellCheck {
 	    return Math.min(Math.min(a, b), c);                                      
 	}
 	
-	private static int minDist(String target, String source){	
+	public static int minDist(String target, String source){	
 		//int m = target.length();
 		//int n = source.length();
 		System.out.println("target length: "+target.length()+" source length: "+source.length());
@@ -24,18 +24,18 @@ public class SimpleSpellCheck {
 		for (int i=0; i<target.length();i++){
 			dist[i][0] = i;
 		}
-		/*******/
-//		for (int j=0; j<target.length();j++){
-//			dist[j][0]=j;
-//			System.out.println(dist[j][0]);
-//		}
+		/*******
+		for (int j=0; j<target.length();j++){
+			dist[j][0]=j;
+			System.out.println(dist[j][0]);
+		}
 			
 		
-//		for (int i=0; i<source.length();i++){
-//			dist[i][0]=i;
-//			System.out.println(dist[i][0]);
-//		}
-		/*******/
+		for (int i=0; i<source.length();i++){
+			dist[i][0]=i;
+			System.out.println(dist[i][0]);
+		}
+		*******/
 		for (int j=0;j<source.length();j++){
 			dist[0][j]= j;
 		}
@@ -45,7 +45,7 @@ public class SimpleSpellCheck {
 				dist[i][j]= minimum(
 						dist[i-1][j]+1,
 						dist[i][j-1]+1,
-						dist[i-1][j-1]+((target.charAt(i-1)== source.charAt(j-1)) ? 0 : 1));
+						dist[i-1][j-1]+((target.charAt(i-1)== source.charAt(j-1)) ? 0 : 1)); // boolean to int here
 			}
 		}
 		return dist[target.length()][source.length()]; 
